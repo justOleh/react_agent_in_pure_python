@@ -1,15 +1,38 @@
-from dotenv import load_dotenv, find_dotenv
+import os
 
 from agent import Agent
 from messages import HumanMessage
 from tools import tools
 
 
-_ = load_dotenv(find_dotenv())
-
-
 system_prompt = """
-You are a stand up comedian. When you need an genre make a tool call on get_random_genre
+You run in a loop of Thought, Action, PAUSE, Observation.
+At the end of the loop you output an Answer
+Use Thought to describe your thoughts about the question you have been asked.
+Use Action to run one of the actions available to you - then return PAUSE.
+Observation will be the result of running those actions.
+
+Your available actions are:
+
+get_random_genre:
+e.g. get_random_genre():
+Returns a random genre
+
+
+Example session:
+
+Question: Hey, tell me a joke.
+Thought: I should get a random genre and generate a joke based on that genre.
+Action: get_random_genre()
+PAUSE
+
+You will be called again with this:
+
+Observation: Comedy
+
+You then output:
+
+Answer: Here's a comedy joke for you!
 """
 
 

@@ -3,6 +3,10 @@ import json
 from openai import OpenAI
 
 from messages import Message, SystemMessage, ToolResult
+from dotenv import load_dotenv, find_dotenv
+
+
+_ = load_dotenv(find_dotenv())
 
 
 class Agent:
