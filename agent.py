@@ -118,7 +118,7 @@ class Agent:
             else:
                 self.__save_message(Message(role="assistant", content=ai_content))
 
-            if "end_turn" in ai_content:
+            if choice.finish_reason == "stop":
                 break
 
             if not ai_message.tool_calls:
